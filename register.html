@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #121212;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .register-container {
+            background: #1e1e1e;
+            padding: 30px;
+            border-radius: 10px;
+            width: 400px;
+            text-align: center;
+        }
+        .register-title {
+            font-size: 26px;
+            margin-bottom: 20px;
+        }
+        .input-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .input-group input {
+            width: 100%;
+            padding: 10px;
+            background: #1b1b1b;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            color: white;
+        }
+        .register-button {
+            width: 100%;
+            padding: 10px;
+            background: linear-gradient(90deg, #007bff, #0056b3);
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .register-button:hover {
+            background: linear-gradient(90deg, #0056b3, #003d82);
+        }
+        .login-link {
+            margin-top: 15px;
+            font-size: 14px;
+        }
+        .login-link a {
+            color: #007bff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="register-container">
+        <h2 class="register-title">Регистрация</h2>
+        <div class="input-group">
+            <input type="text" id="username" placeholder="Придумайте логин">
+        </div>
+        <div class="input-group">
+            <input type="password" id="password" placeholder="Придумайте пароль">
+        </div>
+        <div class="input-group">
+            <input type="password" id="confirm-password" placeholder="Повторите пароль">
+        </div>
+        <div class="input-group">
+            <input type="email" id="email" placeholder="Введите E-mail">
+        </div>
+        <button class="register-button" onclick="handleRegister()">Зарегистрироваться</button>
+        <div class="login-link">Уже есть аккаунт? <a href="login.html">Авторизация</a></div>
+    </div>
+
+    <script>
+        function handleRegister() {
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+            const email = document.getElementById('email').value;
+
+            if (!username || !password || !confirmPassword || !email) {
+                alert('Заполните все поля');
+                return;
+            }
+            if (password !== confirmPassword) {
+                alert('Пароли не совпадают');
+                return;
+            }
+
+            const users = JSON.parse(localStorage.getItem('users')) || [];
+            const userExists = users.some(user => user.username === username);
+            if (userExists) {
+                alert('Этот логин уже занят');
+                return;
+            }
+
+            const newUid = (parseInt(localStorage.getItem('lastUid')) || 0) + 1;
+            const regDate = new Date().toLocaleString();
+
+            users.push({ uid: newUid, username, password, email, regDate });
+            localStorage.setItem('users', JSON.stringify(users));
+            localStorage.setItem('lastUid', newUid);
+
+            alert('Регистрация успешна!');
+            window.location.href = 'login.html';
+        }
+    </script>
+</body>
+</html>
