@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Личный кабинет</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        body {
+            background-color: #121212;
+            font-family: 'Poppins', sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+        }
+        .cabinet-container {
+            background: linear-gradient(145deg, #1e1e1e, #292929);
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+            padding: 30px;
+            border-radius: 10px;
+            width: 700px;
+        }
+        .cabinet-title {
+            text-align: center;
+            font-size: 26px;
+            margin-bottom: 25px;
+        }
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 10px;
+            margin-bottom: 20px;
+        }
+        .info-item {
+            background: #1b1b1b;
+            padding: 15px;
+            border-radius: 5px;
+        }
+        .info-label {
+            font-size: 14px;
+            color: #888;
+        }
+        .info-value {
+            font-size: 16px;
+            color: white;
+        }
+        .button-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            justify-content: space-between;
+        }
+        .cabinet-button {
+            background: #007bff;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 14px;
+            cursor: pointer;
+            flex: 1 1 calc(33.333% - 10px);
+            text-align: center;
+        }
+        .cabinet-button:hover {
+            background: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="cabinet-container">
+        <h2 class="cabinet-title">Личный кабинет</h2>
+        <div class="info-grid">
+            <div class="info-item">
+                <div class="info-label">UID</div>
+                <div class="info-value" id="uid">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Логин</div>
+                <div class="info-value" id="username">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Группа</div>
+                <div class="info-value">Пользователь</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Дата регистрации</div>
+                <div class="info-value" id="reg-date">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Последний вход</div>
+                <div class="info-value" id="last-login">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Email</div>
+                <div class="info-value" id="email">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">HWID</div>
+                <div class="info-value">-</div>
+            </div>
+            <div class="info-item">
+                <div class="info-label">Клиент куплен до</div>
+                <div class="info-value">-</div>
+            </div>
+        </div>
+        <div class="button-container">
+            <button class="cabinet-button" onclick="logout()">Выйти</button>
+        </div>
+    </div>
+
+    <script>
+        function loadUserData() {
+            const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+            if (!currentUser) {
+                window.location.href = 'login.html';
+                return;
+            }
+            document.getElementById('uid').textContent = currentUser.uid;
+            document.getElementById('username').textContent = currentUser.username;
+            document.getElementById('email').textContent = currentUser.email;
+            document.getElementById('reg-date').textContent = currentUser.regDate; // Дата регистрации
+            document.getElementById('last-login').textContent = new Date().toLocaleString();
+            
+            currentUser.lastLogin = new Date().toLocaleString();
+            localStorage.setItem('currentUser', JSON.stringify(currentUser));
+        }
+
+        function logout() {
+            localStorage.removeItem('currentUser');
+            window.location.href = 'login.html';
+        }
+
+        loadUserData();
+    </script>
+</body>
+</html>
