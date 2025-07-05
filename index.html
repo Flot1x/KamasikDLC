@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <div class="snow"></div>
+        <title>Использование шрифта Kanit</title>
+        <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet"> <!-- Подключение шрифта -->
+        <style>
+            body {
+                font-family: 'Kanit', sans-serif; /* Используем шрифт Kanit */
+            }
+        </style>
+    </head>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Игровой клиент</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        body {
+            background: linear-gradient(to bottom, #0d0d0d, #1a1a1a, #0f0f0f);
+            color: white;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }   
+        .header {
+            background: #0d0d0d;
+            padding: 15px 30px;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+        }
+        .header-title {
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .nav-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-end;
+            width: 100%;
+        }
+
+        .btn {
+            background: #1c1c1c;
+            color: white;
+            border: 2px solid white;
+            border-radius: 25px;
+            padding: 12px 30px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.2);
+            transform: skewX(-45deg);
+            transition: left 0.4s;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .section {
+            text-align: center;
+            padding: 50px 20px;
+            max-width: 1000px;
+            margin: auto;
+        }
+        .highlight-text {
+            color: #d1d5db;
+        }
+        .about-section {
+    text-align: left;
+    margin-top: 150px; 
+    font-size: 1.1rem;
+    padding: 50px;
+    background-color: rgba(27, 27, 27, 0.9);
+    margin-left: 50px;
+    margin-right: 50px;
+    border-radius: 10px;
+}
+
+        .about-section h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+        .about-buttons {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .advantages-section {
+    padding: 20px;
+    margin-top: 50px;
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    max-height: none; 
+    overflow: visible; 
+}
+
+
+        .feature-card {
+            background: #2c2c2c;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+            transition: background-color 0.3s;
+        }
+
+        .feature-card:hover {
+            background-color: #3c3c3c;
+        }
+
+        .scroll-link {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 18px;
+            cursor: pointer;
+            color: #007bff;
+        }
+        .scroll-link:hover {
+            text-decoration: underline;
+        } 
+    </style>    
+</head>
+<body>
+    <header class="header">
+        <h1 class="header-title">NURSULTAN</h1>
+        <div class="nav-buttons">
+            <!-- Кнопки по правому краю -->
+            <button class="btn"><span>Поддержка</span></button>
+            <a href="product.html" class="btn"><span>Купить</span></a>
+            <button class="btn" onclick="window.location.href='login.html'">
+                <span>Авторизация</span>
+            </button>
+            
+        </div>
+    </header>
+
+    <section class="about-section">
+        <h2>О нас</h2>
+        <p>Мы предоставляем вам лучший клиент для комфортной игры, <p> 
+           <p> который даст вам наилучшие впечатления от игры. 
+             </p>
+        <div class="about-buttons">
+            <button class="btn"><span>Купить</span></button>
+            <button class="btn"><span>Подробнее</span></button>
+        </div>
+    </section>
+
+    <div class="advantages-section" id="advantages-section">
+        <script>
+            document.querySelector('.about-buttons .btn:last-child').addEventListener('click', function() {
+                document.getElementById('advantages-section').scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            });
+        </script>
+        
+      <div class="advantages-section">
+        <h2 class="text-4xl font-bold text-center">Наши преимущества</h2>
+        <p class="highlight-text text-center">Мы кратко изложили вам то, что вы гарантированно получите после покупки нашего клиента.</p>
+    
+        <!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Использование шрифта Kanit</title>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <style>
+        .grid {
+            font-family: 'Kanit', sans-serif;
+        }
+
+        .feature-card h3,
+        .feature-card p {
+            font-family: 'Kanit', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mt-10">
+        <div class="feature-card flex flex-col items-start gap-3">
+            <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11M9 21V3M17 16l4-4-4-4" />
+                </svg>
+                <h3 class="text-xl font-semibold">Красивый внешний вид</h3>
+            </div>
+            <p>В нашем клиенте присутствует большое количество визуальных функций, которые сделают вашу игру более красочной. А так же вы можете настроить оформление клиента под себя, сделав его по настоящему красивым.</p>
+        </div>
+        <div class="feature-card flex flex-col items-start gap-3">
+            <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                </svg>
+                <h3 class="text-xl font-semibold">Настраиваемость</h3>
+            </div>
+            <p>В нашем клиенте вы можете настроить практически любую функцию под себя, а так же использовать конфигурации других пользователей. Благодаря этому вы сможете использовать наш клиент на максимуме его возможностей.</p>
+        </div>
+        <div class="feature-card flex flex-col items-start gap-3">
+            <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19V6l-2 2M15 6l2 2v13" />
+                </svg>
+                <h3 class="text-xl font-semibold">Оптимизация</h3>
+            </div>
+            <p>Мы постоянно улучшаем оптимизацию нашего клиента и самой игры. Благодаря этому вы сможете запустить наш клиент даже на слабых компьютерах.</p>
+        </div>
+        <div class="feature-card flex flex-col items-start gap-3">
+            <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 8h10M7 12h8m-8 4h10" />
+                </svg>
+                <h3 class="text-xl font-semibold">Лучшая поддержка</h3>
+            </div>
+            <p>У нас самая лучшая поддержка, которая разбирается в своём деле и сможет помочь вам по любому вопросу связанному с нашим клиентом.</p>
+        </div>
+        <div class="feature-card flex flex-col items-start gap-3">
+            <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h11M9 21V3M17 16l4-4-4-4" />
+                </svg>
+                <h3 class="text-xl font-semibold">Частые обновления</h3>
+            </div>
+            <p>Мы регулярно обновляем функционал в нашем клиенте, добавляя новые функции, а так же совершенствуя уже существующие. Благодаря этому наш клиент имеет преимущества под все существующие сервера.</p>
+        </div>
+        <div class="feature-card flex flex-col items-start gap-3">
+            <div class="flex items-center gap-3">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="white">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6M6 6h12" />
+                </svg>
+                <h3 class="text-xl font-semibold">Простота использования</h3>
+            </div>
+            <p>Интерфейс клиента интуитивно понятен и прост в использовании.</p>
+        </div>
+    </div>
+</body>
+</html>
